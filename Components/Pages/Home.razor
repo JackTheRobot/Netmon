@@ -1,4 +1,6 @@
-﻿@page "/"
+﻿@using Netmon.Classes;
+
+@page "/"
 @rendermode InteractiveServer
 
 <h1>Welcome to Netmon!</h1>
@@ -7,5 +9,8 @@
 
 @code
 {
-	
+	protected override async Task OnInitializedAsync()
+	{
+		NetmonCollection.ClearCollection();
+	}
 }

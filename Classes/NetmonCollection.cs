@@ -35,6 +35,14 @@
             if (!removed) Console.WriteLine("Attempted to remove Netmon that wasn't in collection");
         }
 
+        public static void ClearCollection()
+        {
+            for (int i = 0;i < Netmons.Length;i++ )
+            {
+                Netmons[i] = null!;
+            }
+        }
+
         public static bool CollectionFull()
         {
             bool full = true;

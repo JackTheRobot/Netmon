@@ -3,26 +3,35 @@
 @rendermode InteractiveServer
 @page "/InitialNetmonSetup"
 
-@if(LatestNetmon != null)
+@if(latestNetmon != null)
 {
 	<h2>New Netmon added to collection!</h2>
-	<p>Name: @LatestNetmon.Name</p>
-	<p>Skin Colour: @LatestNetmon.SkinColour</p>
-	<p>Hair Colour: @LatestNetmon.HairColour</p>
-	<p>Hair Location: @LatestNetmon.HairLocation</p>
-	<p>Movement Type: @LatestNetmon.MovementType</p>
-	<p>Number of Eyes: @LatestNetmon.NumEyes</p>
-	<p>Attack: @LatestNetmon.AttackStat</p>
-	<p>Defence: @LatestNetmon.DefenceStat</p>
-	<p>Speed: @LatestNetmon.SpeedStat</p>
+	<p>Name:</p>
+	<input @bind="LatestNetmonName" @bind:event="oninput" />
+	<p>Skin Colour: @latestNetmon.SkinColour</p>
+	<p>Hair Colour: @latestNetmon.HairColour</p>
+	<p>Hair Location: @latestNetmon.HairLocation</p>
+	<p>Movement Type: @latestNetmon.MovementType</p>
+	<p>Number of Eyes: @latestNetmon.NumEyes</p>
+	<p>Attack: @latestNetmon.AttackStat</p>
+	<p>Defence: @latestNetmon.DefenceStat</p>
+	<p>Speed: @latestNetmon.SpeedStat</p>
 }
 
-@if(NetmonCollection.Netmons[2] == null)
+@if(NetmonCollection.Netmons[0] == null)
 {
-	<button @onclick="BuildNetmon">New Netmon!</button>				
+	<button @onclick="BuildNetmon">New Netmon!</button>	
 }
 
-@if(NetmonCollection.Netmons[2] != null)
+@if(NetmonCollection.Netmons[0] != null
+	&& NetmonCollection.Netmons[2] == null
+	&& !string.IsNullOrEmpty(LatestNetmonName))
+{
+	<button @onclick="BuildNetmon">New Netmon!</button>
+}
+
+@if(NetmonCollection.Netmons[2] != null
+	&& !string.IsNullOrEmpty(LatestNetmonName))
 {
 	<a href="/Collection">Continue</a>
 }
@@ -30,11 +39,22 @@
 
 @code {
 	NetmonBuilder builder = new();
-	Netmon LatestNetmon = null!;
+	Netmon latestNetmon = null!;
+	string latestNetmonName = "";
+	public string LatestNetmonName
+	{ 
+		get => latestNetmonName;
+		set
+		{ 
+			latestNetmon.SetName(value);
+			latestNetmonName = value;
+		} 
+	}
 
 	void BuildNetmon()
 	{
-		LatestNetmon = builder.NewNetmon();
-		NetmonCollection.AddNetmon(LatestNetmon);
+		latestNetmon = builder.NewNetmon();
+		NetmonCollection.AddNetmon(latestNetmon);
+		LatestNetmonName = "";
 	}
 }
