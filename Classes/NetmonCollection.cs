@@ -1,24 +1,24 @@
 ﻿namespace Netmon.Classes
 {
-    public class NetmonCollection
+    public static class NetmonCollection
     {
-        public Netmon[] Netmons { get; private set; } = new Netmon[5];
+        public static Netmon[] Netmons { get; private set; } = new Netmon[5];
 
-        public void AddNetmon(Netmon netmon)
+        public static void AddNetmon(Netmon netmon)
         {
             for (int i = 0; i < Netmons.Length; i++)
             {
                 if (Netmons[i] == null)
                 {
                     Netmons[i] = netmon;
-                    break;
+                    return;
                 }
-
-                Console.WriteLine("Netmon Collection full");
             }
+
+            Console.WriteLine("Netmon Collection full");
         }
 
-        public void RemoveNetmon(Netmon netmon)
+        public static void RemoveNetmon(Netmon netmon)
         {
             bool removed = false;
 
@@ -35,7 +35,7 @@
             if (!removed) Console.WriteLine("Attempted to remove Netmon that wasn't in collection");
         }
 
-        public bool CollectionFull()
+        public static bool CollectionFull()
         {
             bool full = true;
 

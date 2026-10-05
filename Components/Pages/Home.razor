@@ -1,31 +1,11 @@
-﻿@using Netmon.Classes;
-
-@page "/"
+﻿@page "/"
 @rendermode InteractiveServer
 
-@if (netmon != null)
-{
-	<p>
-		Your Netmon has @netmon.SkinColour skin
-		and @netmon.HairColour hair
-		on its @netmon.HairLocation.
-		It moves by @netmon.MovementType
-		and has @netmon.NumEyes eyes.
-	</p>
-}
+<h1>Welcome to Netmon!</h1>
 
-<button @onclick="BuildNetmon">Next Netmon</button>
-
-<a href="\Breeder">Go To Breeder</a>
+<a href="/InitialNetmonSetup">Start Game</a>
 
 @code
 {
-	NetmonBuilder builder = new();
-
-	Netmon netmon = null!;
-
-	void BuildNetmon()
-	{
-		netmon = builder.NewNetmon();
-	}
+	
 }

@@ -1,0 +1,40 @@
+﻿@using Netmon.Classes;
+
+@rendermode InteractiveServer
+@page "/InitialNetmonSetup"
+
+@if(LatestNetmon != null)
+{
+	<h2>New Netmon added to collection!</h2>
+	<p>Name: @LatestNetmon.Name</p>
+	<p>Skin Colour: @LatestNetmon.SkinColour</p>
+	<p>Hair Colour: @LatestNetmon.HairColour</p>
+	<p>Hair Location: @LatestNetmon.HairLocation</p>
+	<p>Movement Type: @LatestNetmon.MovementType</p>
+	<p>Number of Eyes: @LatestNetmon.NumEyes</p>
+	<p>Attack: @LatestNetmon.AttackStat</p>
+	<p>Defence: @LatestNetmon.DefenceStat</p>
+	<p>Speed: @LatestNetmon.SpeedStat</p>
+}
+
+@if(NetmonCollection.Netmons[2] == null)
+{
+	<button @onclick="BuildNetmon">New Netmon!</button>				
+}
+
+@if(NetmonCollection.Netmons[2] != null)
+{
+	<a href="/Collection">Continue</a>
+}
+
+
+@code {
+	NetmonBuilder builder = new();
+	Netmon LatestNetmon = null!;
+
+	void BuildNetmon()
+	{
+		LatestNetmon = builder.NewNetmon();
+		NetmonCollection.AddNetmon(LatestNetmon);
+	}
+}

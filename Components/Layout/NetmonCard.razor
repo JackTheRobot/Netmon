@@ -1,0 +1,32 @@
+﻿@using Netmon.Classes;
+
+@if(Netmon != null)
+{
+	<p>Name: @Netmon.Name</p>
+	<p>Skin Colour: @Netmon.SkinColour</p>
+	<p>Hair Colour: @Netmon.HairColour</p>
+	<p>Hair Location: @Netmon.HairLocation</p>
+	<p>Movement Type: @Netmon.MovementType</p>
+	<p>Number of Eyes: @Netmon.NumEyes</p>
+	<p>Attack: @Netmon.AttackStat</p>
+	<p>Defence: @Netmon.DefenceStat</p>
+	<p>Speed: @Netmon.SpeedStat</p>
+	<button @onclick="ReleaseNetmon">Release</button>
+}
+
+@if(Netmon == null){
+	<p>Slot Empty</p>
+}
+
+@code {
+	[Parameter]
+	public Netmon Netmon { get; set; } = null!;
+	[Parameter]
+	public EventCallback OnNetmonReleased { get; set; }
+
+	void ReleaseNetmon()
+	{
+		NetmonCollection.RemoveNetmon(Netmon);
+		OnNetmonReleased.InvokeAsync();
+	}
+}
