@@ -16,30 +16,24 @@ namespace Netmon.Classes
 
             properties = JsonSerializer.Deserialize<NetmonProperties>(json)!;
 
+            string skinColour = "";
             string hairColour = "";
             string hairLocation = "";
             string movementType = "";
             string numEyes = "";
 
-            Random rand = new();
+            skinColour = properties.RandomSkinColour();
 
-            int randInt = rand.Next(properties.HairColours.Length);
+            hairColour = properties.RandomHairColour();
 
-            hairColour = properties.HairColours[randInt];
+            hairLocation = properties.RandomHairLocation();
 
-            randInt = rand.Next(properties.HairLocations.Length);
+            movementType = properties.RandomMovementType();
 
-            hairLocation = properties.HairLocations[randInt];
+            numEyes = properties.RandomNumEyes();
 
-            randInt = rand.Next(properties.MovementTypes.Length);
-
-            movementType = properties.MovementTypes[randInt];
-
-            randInt = rand.Next(properties.NumEyesArray.Length);
-
-            numEyes = properties.NumEyesArray[randInt];
-
-            Netmon newNetmon = new(hairColour,
+            Netmon newNetmon = new(skinColour,
+                hairColour,
                 hairLocation,
                 movementType,
                 numEyes);

@@ -1,4 +1,5 @@
 {
+  "SkinColours": ["green", "pale", "brown", "yellow", "irridescent", "brindle"],
   "HairColours": [ "green", "blonde", "brown", "white", "red", "purple" ],
   "HairLocations": [ "head", "whole body", "feet", "palms", "back" ],
   "MovementTypes": [ "flying", "crawling", "walking", "jumping" ],

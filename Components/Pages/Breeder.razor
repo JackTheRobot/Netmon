@@ -1,0 +1,92 @@
+﻿@using Netmon.Classes;
+
+@page "/Breeder"
+@rendermode InteractiveServer
+
+@if(parentOne == null)
+{
+	<button @onclick="CreateParentOne">Create Parent One</button>
+}
+
+@if(parentTwo == null)
+{
+	<button @onclick="CreateParentTwo">Create Parent Two</button>
+}
+
+@if(child == null
+&& parentOne != null
+&& parentTwo != null)
+{
+	<button @onclick ="BreedNetmon">Breed Netmon</button>
+}
+
+@if (child != null
+&& parentOne != null
+&& parentTwo != null)
+{
+	<button @onclick="Reset">Reset</button>
+}
+
+@if(parentOne != null)
+{
+	<h2>Parent One</h2>
+	<p>Skin Colour: @parentOne.SkinColour</p>
+	<p>Hair Colour: @parentOne.HairColour</p>
+	<p>Hair Location: @parentOne.HairLocation</p>
+	<p>Movement Type: @parentOne.MovementType</p>
+	<p>Number of Eyes: @parentOne.NumEyes</p>
+}
+
+@if(parentTwo != null)
+{
+	<h2>Parent Two</h2>
+	<p>Skin Colour: @parentTwo.SkinColour</p>
+	<p>Hair Colour: @parentTwo.HairColour</p>
+	<p>Hair Location: @parentTwo.HairLocation</p>
+	<p>Movement Type: @parentTwo.MovementType</p>
+	<p>Number of Eyes: @parentTwo.NumEyes</p>
+}
+
+@if(child != null)
+{
+	<h2>Child</h2>
+	<p>Skin Colour: @child.SkinColour</p>
+	<p>Hair Colour: @child.HairColour</p>
+	<p>Hair Location: @child.HairLocation</p>
+	<p>Movement Type: @child.MovementType</p>
+	<p>Number of Eyes: @child.NumEyes</p>
+}
+
+@code {
+	NetmonBuilder builder = new();
+	NetmonBreeder breeder = new();
+
+	Netmon parentOne;
+	Netmon parentTwo;
+	Netmon child;
+
+	void CreateParentOne()
+	{
+		Console.WriteLine("Creating parent one");
+		parentOne = builder.NewNetmon();
+	}
+
+	void CreateParentTwo()
+	{
+		parentTwo = builder.NewNetmon();
+	}
+
+	void BreedNetmon()
+	{
+		Console.WriteLine("Breeding netmon. Parent one has " + parentOne.SkinColour + " skin and Parent Two has " + parentTwo.SkinColour + " skin.");
+
+		child = breeder.BreedNetmon(parentOne, parentTwo);
+	}
+
+	void Reset()
+	{
+		parentOne = null;
+		parentTwo = null;
+		child = null;
+	}
+}

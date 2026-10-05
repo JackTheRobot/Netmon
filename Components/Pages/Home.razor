@@ -6,7 +6,8 @@
 @if (netmon != null)
 {
 	<p>
-		Your Netmon has @netmon.HairColour hair
+		Your Netmon has @netmon.SkinColour skin
+		and @netmon.HairColour hair
 		on its @netmon.HairLocation.
 		It moves by @netmon.MovementType
 		and has @netmon.NumEyes eyes.
@@ -14,6 +15,8 @@
 }
 
 <button @onclick="BuildNetmon">Next Netmon</button>
+
+<a href="\Breeder">Go To Breeder</a>
 
 @code
 {
