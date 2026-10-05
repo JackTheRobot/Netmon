@@ -9,6 +9,23 @@
             Name = name;
         }
 
+        public int Age { get; private set; } = 0;
+        public bool Dead { get; private set; } = false;
+
+        public void IncreaseAge()
+        {
+            Age += 1;
+
+            if (Age >= LifeExpectancy.Value)
+            {
+                Random rand = new();
+
+                float deathChance = rand.NextSingle();
+
+                if(deathChance > 0.5f) Dead = true;
+            }
+        }
+
         // Cosmetic
 
         public string SkinColour { get; private set; } = "";
