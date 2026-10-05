@@ -35,6 +35,9 @@
 	<p>Hair Location: @parentOne.HairLocation</p>
 	<p>Movement Type: @parentOne.MovementType</p>
 	<p>Number of Eyes: @parentOne.NumEyes</p>
+	<p>Attack: @parentOne.AttackStat</p>
+	<p>Defence: @parentOne.DefenceStat</p>
+	<p>Speed: @parentOne.SpeedStat</p>
 }
 
 @if(parentTwo != null)
@@ -45,6 +48,9 @@
 	<p>Hair Location: @parentTwo.HairLocation</p>
 	<p>Movement Type: @parentTwo.MovementType</p>
 	<p>Number of Eyes: @parentTwo.NumEyes</p>
+	<p>Attack: @parentTwo.AttackStat</p>
+	<p>Defence: @parentTwo.DefenceStat</p>
+	<p>Speed: @parentTwo.SpeedStat</p>
 }
 
 @if(child != null)
@@ -55,15 +61,18 @@
 	<p>Hair Location: @child.HairLocation</p>
 	<p>Movement Type: @child.MovementType</p>
 	<p>Number of Eyes: @child.NumEyes</p>
+	<p>Attack: @child.AttackStat</p>
+	<p>Defence: @child.DefenceStat</p>
+	<p>Speed: @child.SpeedStat</p>
 }
 
 @code {
 	NetmonBuilder builder = new();
 	NetmonBreeder breeder = new();
 
-	Netmon parentOne;
-	Netmon parentTwo;
-	Netmon child;
+	Netmon parentOne = null!;
+	Netmon parentTwo = null!;
+	Netmon child = null!;
 
 	void CreateParentOne()
 	{
@@ -78,15 +87,13 @@
 
 	void BreedNetmon()
 	{
-		Console.WriteLine("Breeding netmon. Parent one has " + parentOne.SkinColour + " skin and Parent Two has " + parentTwo.SkinColour + " skin.");
-
 		child = breeder.BreedNetmon(parentOne, parentTwo);
 	}
 
 	void Reset()
 	{
-		parentOne = null;
-		parentTwo = null;
-		child = null;
+		parentOne = null!;
+		parentTwo = null!;
+		child = null!;
 	}
 }

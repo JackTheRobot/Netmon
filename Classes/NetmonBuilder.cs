@@ -33,13 +33,19 @@ namespace Netmon.Classes
             numEyes = properties.RandomNumEyes();
 
             int startingHP = properties.RandomStartingHP();
+            int startingAttack = properties.RandomStartingAttackStat();
+            int startingDefence = properties.RandomStartingDefenceStat();
+            int startingSpeed = properties.RandomStartingSpeed();
 
             Netmon newNetmon = new(skinColour,
                 hairColour,
                 hairLocation,
                 movementType,
                 numEyes,
-                startingHP);
+                startingHP,
+                startingAttack,
+                startingDefence,
+                startingSpeed);
 
 
             return newNetmon;

@@ -6,6 +6,13 @@
         int minStartingHP = 50;
         int maxStartingHP = 150;
 
+        int minStartingAttackStat = 50;
+        int maxStartingAttackStat = 100;
+        int minStartingDefenceStat = 50;
+        int maxStartingDefenceStat = 100;
+        int minStartingSpeed = 50;
+        int maxStartingSpeed = 100;
+
         public NetmonProperties(string[] skinColours,
             string[] hairColours,
             string[] hairLocations,
@@ -57,9 +64,22 @@
 
         public int RandomStartingHP()
         {
-            int randHP = rand.Next(minStartingHP, maxStartingHP);
+            return rand.Next(minStartingHP, maxStartingHP);
+        }
 
-            return randHP;
+        public int RandomStartingAttackStat()
+        {
+            return rand.Next(minStartingAttackStat, maxStartingAttackStat);
+        }
+
+        public int RandomStartingDefenceStat()
+        {
+            return rand.Next(minStartingDefenceStat, maxStartingDefenceStat);
+        }
+
+        public int RandomStartingSpeed()
+        {
+            return rand.Next(minStartingSpeed, maxStartingSpeed);
         }
     }
 }

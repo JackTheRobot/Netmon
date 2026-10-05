@@ -22,7 +22,10 @@
             string hairLocation,
             string movementType,
             string numEyes,
-            int maxHP)
+            int maxHP,
+            int attackStat,
+            int defenceStat,
+            int speedStat)
         {
             SkinColour = skinColour;
             HairColour = hairColour;
@@ -31,6 +34,9 @@
             NumEyes = numEyes;
             MaxHP = maxHP;
             CurrentHP = maxHP;
+            AttackStat = attackStat;
+            DefenceStat = defenceStat;
+            SpeedStat = speedStat;
         }
 
         // Battle Attributes
@@ -82,6 +88,7 @@
 
         public int AttackStat { get; private set; }
         public int DefenceStat { get; private set; }
-        public int Speed { get; private set; }
+        public int SpeedStat { get; private set; }
+        public List<Attack> Attacks { get; private set; } = new();
     }
 }

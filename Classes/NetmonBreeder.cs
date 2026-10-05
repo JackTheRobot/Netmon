@@ -16,7 +16,7 @@ namespace Netmon.Classes
 
             string propertiesPath = "wwwroot/netmonProperties.json";
 
-            Console.WriteLine("Building new netmon");
+            Console.WriteLine("Building new netmon through breeding");
 
             var json = File.ReadAllText(propertiesPath);
 
@@ -58,14 +58,24 @@ namespace Netmon.Classes
                 numEyes = properties.RandomNumEyes();
             }
 
+            Console.WriteLine("Deciding HP");
             int startingHP = RandomInheritInt(parentOne.MaxHP, parentTwo.MaxHP);
+            Console.WriteLine("Deciding Attack Stat");
+            int startingAttack = RandomInheritInt(parentOne.AttackStat, parentTwo.AttackStat);
+            Console.WriteLine("Deciding Defence Stat");
+            int startingDefence = RandomInheritInt(parentOne.DefenceStat, parentTwo.DefenceStat);
+            Console.WriteLine("Deciding Speed Stat");
+            int startingSpeed = RandomInheritInt(parentOne.SpeedStat, parentTwo.SpeedStat);
 
             return new Netmon(skinColour,
                 hairColour,
                 hairLocation,
                 movementType,
                 numEyes,
-                startingHP
+                startingHP,
+                startingAttack,
+                startingDefence,
+                startingSpeed
                 );
         }
 
@@ -90,17 +100,36 @@ namespace Netmon.Classes
         {
             float randFloat = rand.NextSingle();
 
+            float holdingFloat = 0;
+            int returnInt = 0;
+
             if (randFloat < parentInheritChance)
             {
-                return parentOneAttribute;
+                Console.WriteLine("Inherited from Parent One");
+
+                holdingFloat = parentOneAttribute + ((float)parentOneAttribute / 100 * 5);
+
+                returnInt = (int)holdingFloat;
+
+                return returnInt;
             }
 
             else if (randFloat < parentInheritChance * 2)
             {
-                return parentTwoAttribute;
+                Console.WriteLine("Inherited from Parent Two");
+
+                holdingFloat = parentTwoAttribute + ((float)parentTwoAttribute / 100 * 5);
+
+                returnInt = (int)holdingFloat;
+
+                return returnInt;
             }
 
-            else return properties.RandomStartingHP();
+            else
+            {
+                Console.WriteLine("Decided at random");
+                return properties.RandomStartingHP();
+            }
         }
     }
 }
