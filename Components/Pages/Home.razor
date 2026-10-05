@@ -1,19 +1,28 @@
-﻿@page "/"
+﻿@using Netmon.Classes;
+
+@page "/"
 @rendermode InteractiveServer
 
-<p>New Sentence</p>
-<p>Even newer sentence</p>
-<p>@someText</p>
+@if (netmon != null)
+{
+	<p>
+		Your Netmon has @netmon.HairColour hair
+		on its @netmon.HairLocation.
+		It moves by @netmon.MovementType
+		and has @netmon.NumEyes eyes.
+	</p>
+}
 
-<button @onclick="ShowSomeText"></button>
+<button @onclick="BuildNetmon">Next Netmon</button>
 
 @code
 {
-	string someText = "";
+	NetmonBuilder builder = new();
 
-	void ShowSomeText()
+	Netmon netmon = null!;
+
+	void BuildNetmon()
 	{
-		if (someText == "") someText = "Some Text";
-		else someText = "";
+		netmon = builder.NewNetmon();
 	}
 }

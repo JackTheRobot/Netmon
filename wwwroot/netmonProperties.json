@@ -1,0 +1,6 @@
+{
+  "HairColours": [ "green", "blonde", "brown", "white", "red", "purple" ],
+  "HairLocations": [ "head", "whole body", "feet", "palms", "back" ],
+  "MovementTypes": [ "flying", "crawling", "walking", "jumping" ],
+  "NumEyesArray": [ "one", "two", "three", "six", "eight" ]
+}
