@@ -28,45 +28,48 @@ namespace Netmon.Classes
             string movementType = "";
             string numEyes = "";
 
-            skinColour = RandomInherit(parentOne.SkinColour, parentTwo.SkinColour);
+            skinColour = RandomInheritString(parentOne.SkinColour, parentTwo.SkinColour);
             if (string.IsNullOrEmpty(skinColour))
             {
                 skinColour = properties.RandomSkinColour();
             }
 
-            hairColour = RandomInherit(parentOne.HairColour, parentTwo.HairColour);
+            hairColour = RandomInheritString(parentOne.HairColour, parentTwo.HairColour);
             if (string.IsNullOrEmpty(hairColour))
             {
                 hairColour = properties.RandomHairColour();
             }
 
-            hairLocation = RandomInherit(parentOne.HairLocation, parentTwo.HairLocation);
+            hairLocation = RandomInheritString(parentOne.HairLocation, parentTwo.HairLocation);
             if (string.IsNullOrEmpty(hairLocation))
             {
                 hairLocation = properties.RandomHairLocation();
             }
 
-            movementType = RandomInherit(parentOne.MovementType, parentTwo.MovementType);
+            movementType = RandomInheritString(parentOne.MovementType, parentTwo.MovementType);
             if (string.IsNullOrEmpty(movementType))
             {
                 movementType = properties.RandomMovementType();
             }
 
-            numEyes = RandomInherit(parentOne.NumEyes, parentTwo.NumEyes);
+            numEyes = RandomInheritString(parentOne.NumEyes, parentTwo.NumEyes);
             if (string.IsNullOrEmpty(numEyes))
             {
                 numEyes = properties.RandomNumEyes();
             }
 
+            int startingHP = RandomInheritInt(parentOne.MaxHP, parentTwo.MaxHP);
+
             return new Netmon(skinColour,
                 hairColour,
                 hairLocation,
                 movementType,
-                numEyes
+                numEyes,
+                startingHP
                 );
         }
 
-        string RandomInherit(string parentOneAttribute, string parentTwoAttribute)
+        string RandomInheritString(string parentOneAttribute, string parentTwoAttribute)
         {
             float randFloat = rand.NextSingle();
 
@@ -81,6 +84,23 @@ namespace Netmon.Classes
             }
 
             else return "";
+        }
+
+        int RandomInheritInt(int parentOneAttribute, int parentTwoAttribute)
+        {
+            float randFloat = rand.NextSingle();
+
+            if (randFloat < parentInheritChance)
+            {
+                return parentOneAttribute;
+            }
+
+            else if (randFloat < parentInheritChance * 2)
+            {
+                return parentTwoAttribute;
+            }
+
+            else return properties.RandomStartingHP();
         }
     }
 }

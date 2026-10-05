@@ -2,29 +2,86 @@
 {
     public class Netmon
     {
-        public Netmon(string skinColour,
-            string hairColour,
-            string hairLocation,
-            string movementType,
-            string numEyes)
+        public string Name { get; private set; } = "";
+
+        public void SetName(string name)
         {
-            SkinColour = skinColour;
-            HairColour = hairColour;
-            HairLocation = hairLocation;
-            MovementType = movementType;
-            NumEyes = numEyes;
+            Name = name;
         }
 
-        public string Name { get; private set; } = "";
+        // Cosmetic
+
         public string SkinColour { get; private set; } = "";
         public string HairColour { get; private set; } = "";
         public string HairLocation { get; private set; } = "";
         public string MovementType { get; private set; } = "";
         public string NumEyes { get; private set; } = "";
 
-        public void SetName(string name)
+        public Netmon(string skinColour,
+            string hairColour,
+            string hairLocation,
+            string movementType,
+            string numEyes,
+            int maxHP)
         {
-            Name = name;
+            SkinColour = skinColour;
+            HairColour = hairColour;
+            HairLocation = hairLocation;
+            MovementType = movementType;
+            NumEyes = numEyes;
+            MaxHP = maxHP;
+            CurrentHP = maxHP;
         }
+
+        // Battle Attributes
+
+        public int MaxHP { get; private set; }
+        public int CurrentHP { get; private set; }
+        public bool Fainted { get; private set; } = false;
+
+        public void ReduceHP(int amount)
+        {
+            CurrentHP -= amount;
+
+            if (CurrentHP <= 0)
+            {
+                CurrentHP = 0;
+                Fainted = true;
+            }
+        }
+
+        public void RestoreHP(int amount)
+        {
+            CurrentHP += amount;
+
+            if (CurrentHP > MaxHP) CurrentHP = MaxHP;
+
+            if (Fainted) Fainted = false;
+        }
+
+        public int EXP { get; private set; } = 0;
+        public int Level { get; private set; } = 0;
+
+        public void AddEXP(int amount)
+        {
+            EXP += amount;
+
+            int level = LevelDefinitions.GetLevelFromEXP(EXP);
+
+            if (level > Level)
+            {
+                Level = level;
+                LevelUp();
+            }
+        }
+
+        void LevelUp()
+        {
+            Console.WriteLine(Name + " levelled up!");
+        }
+
+        public int AttackStat { get; private set; }
+        public int DefenceStat { get; private set; }
+        public int Speed { get; private set; }
     }
 }

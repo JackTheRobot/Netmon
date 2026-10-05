@@ -3,6 +3,8 @@
     public class NetmonProperties
     {
         Random rand = new();
+        int minStartingHP = 50;
+        int maxStartingHP = 150;
 
         public NetmonProperties(string[] skinColours,
             string[] hairColours,
@@ -51,6 +53,13 @@
         {
             int randInt = rand.Next(NumEyesArray.Length);
             return NumEyesArray[randInt];
+        }
+
+        public int RandomStartingHP()
+        {
+            int randHP = rand.Next(minStartingHP, maxStartingHP);
+
+            return randHP;
         }
     }
 }
