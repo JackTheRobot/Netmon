@@ -1,0 +1,19 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+<p>New Sentence</p>
+<p>Even newer sentence</p>
+<p>@someText</p>
+
+<button @onclick="ShowSomeText"></button>
+
+@code
+{
+	string someText = "";
+
+	void ShowSomeText()
+	{
+		if (someText == "") someText = "Some Text";
+		else someText = "";
+	}
+}
