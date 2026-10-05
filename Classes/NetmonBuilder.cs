@@ -21,6 +21,7 @@ namespace Netmon.Classes
             string hairLocation = "";
             string movementType = "";
             string numEyes = "";
+            string size = "";
 
             skinColour = properties.RandomSkinColour();
 
@@ -32,6 +33,8 @@ namespace Netmon.Classes
 
             numEyes = properties.RandomNumEyes();
 
+            size = properties.RandomSize();
+
             int startingHP = properties.RandomStartingHP();
             int startingAttack = properties.RandomStartingAttackStat();
             int startingDefence = properties.RandomStartingDefenceStat();
@@ -42,6 +45,7 @@ namespace Netmon.Classes
                 hairLocation,
                 movementType,
                 numEyes,
+                size,
                 startingHP,
                 startingAttack,
                 startingDefence,

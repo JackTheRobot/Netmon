@@ -1,0 +1,26 @@
+#Header{
+    display:flex;
+    width:95%;
+    margin-left: 2.5%;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.MenuItem{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+a{
+    width: 10%;
+    background-color: var(--teal);
+    border: none;
+    margin-bottom: 10px;
+}
+
+a:hover{
+    background-color: var(--lightTeal);
+}

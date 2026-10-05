@@ -27,6 +27,7 @@ namespace Netmon.Classes
             string hairLocation = "";
             string movementType = "";
             string numEyes = "";
+            string size = "";
 
             skinColour = RandomInheritString(parentOne.SkinColour, parentTwo.SkinColour);
             if (string.IsNullOrEmpty(skinColour))
@@ -58,6 +59,12 @@ namespace Netmon.Classes
                 numEyes = properties.RandomNumEyes();
             }
 
+            size = RandomInheritString(parentOne.Size, parentTwo.Size);
+            if (string.IsNullOrEmpty(size))
+            {
+                size = properties.RandomSize();
+            }
+
             Console.WriteLine("Deciding HP");
             int startingHP = RandomInheritInt(parentOne.MaxHP, parentTwo.MaxHP);
             Console.WriteLine("Deciding Attack Stat");
@@ -72,6 +79,7 @@ namespace Netmon.Classes
                 hairLocation,
                 movementType,
                 numEyes,
+                size,
                 startingHP,
                 startingAttack,
                 startingDefence,

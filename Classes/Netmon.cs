@@ -33,12 +33,14 @@
         public string HairLocation { get; private set; } = "";
         public string MovementType { get; private set; } = "";
         public string NumEyes { get; private set; } = "";
+        public string Size { get; private set; } = "";
 
         public Netmon(string skinColour,
             string hairColour,
             string hairLocation,
             string movementType,
             string numEyes,
+            string size,
             int maxHP,
             int attackStat,
             int defenceStat,
@@ -49,6 +51,7 @@
             HairLocation = hairLocation;
             MovementType = movementType;
             NumEyes = numEyes;
+            Size = size;
             MaxHP = maxHP;
             CurrentHP = maxHP;
             AttackStat = attackStat;

@@ -1,0 +1,10 @@
+#Card{
+    text-align:center;
+    width: 800px;
+    background-color: var(--orange);
+    border-radius: 5px;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

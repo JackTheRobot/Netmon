@@ -13,24 +13,49 @@
         int minStartingSpeed = 50;
         int maxStartingSpeed = 100;
 
+        public int RandomStartingHP()
+        {
+            return rand.Next(minStartingHP, maxStartingHP);
+        }
+
+        public int RandomStartingAttackStat()
+        {
+            return rand.Next(minStartingAttackStat, maxStartingAttackStat);
+        }
+
+        public int RandomStartingDefenceStat()
+        {
+            return rand.Next(minStartingDefenceStat, maxStartingDefenceStat);
+        }
+
+        public int RandomStartingSpeed()
+        {
+            return rand.Next(minStartingSpeed, maxStartingSpeed);
+        }
+
+        // COSMETICS
+
         public NetmonProperties(string[] skinColours,
             string[] hairColours,
             string[] hairLocations,
             string[] movementTypes,
-            string[] numEyesArray)
+            string[] numEyesArray,
+            string[] sizes)
         {
             SkinColours = skinColours;
             HairColours = hairColours;
             HairLocations = hairLocations;
             MovementTypes = movementTypes;
             NumEyesArray = numEyesArray;
+            Sizes = sizes;
         }
-
+        
         public string[] SkinColours { get; private set; } = [];
         public string[] HairColours { get; private set; } = [];
         public string[] HairLocations { get; private set; } = [];
         public string[] MovementTypes { get; private set; } = [];
         public string[] NumEyesArray { get; private set; } = [];
+        public string[] Sizes { get; private set; } = [];
 
         public string RandomSkinColour()
         {
@@ -62,24 +87,10 @@
             return NumEyesArray[randInt];
         }
 
-        public int RandomStartingHP()
+        public string RandomSize()
         {
-            return rand.Next(minStartingHP, maxStartingHP);
-        }
-
-        public int RandomStartingAttackStat()
-        {
-            return rand.Next(minStartingAttackStat, maxStartingAttackStat);
-        }
-
-        public int RandomStartingDefenceStat()
-        {
-            return rand.Next(minStartingDefenceStat, maxStartingDefenceStat);
-        }
-
-        public int RandomStartingSpeed()
-        {
-            return rand.Next(minStartingSpeed, maxStartingSpeed);
+            int randInt = rand.Next(Sizes.Length);
+            return Sizes[randInt];
         }
     }
 }

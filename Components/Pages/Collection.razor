@@ -3,31 +3,20 @@
 @page "/Collection"
 @rendermode InteractiveServer
 
-@if(NetmonCollection.Netmons[0] != null)
-{
+<SiteHeader></SiteHeader>
+
+<h1>Collection</h1>
+
+<div id="CardDisplay">
+
 	<NetmonCard Netmon="NetmonCollection.Netmons[0]" OnNetmonReleased="StateHasChanged" />
-}
 
-@if (NetmonCollection.Netmons[1] != null)
-{
 	<NetmonCard Netmon="NetmonCollection.Netmons[1]" OnNetmonReleased="StateHasChanged" />
-}
 
-@if (NetmonCollection.Netmons[2] != null)
-{
 	<NetmonCard Netmon="NetmonCollection.Netmons[2]" OnNetmonReleased="StateHasChanged" />
-}
 
-@if (NetmonCollection.Netmons[3] != null)
-{
 	<NetmonCard Netmon="NetmonCollection.Netmons[3]" OnNetmonReleased="StateHasChanged" />
-}
 
-@if (NetmonCollection.Netmons[4] != null)
-{
 	<NetmonCard Netmon="NetmonCollection.Netmons[4]" OnNetmonReleased="StateHasChanged" />
-}
 
-@code {
-	
-}
+</div>

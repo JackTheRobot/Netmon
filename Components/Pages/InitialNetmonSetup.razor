@@ -3,39 +3,38 @@
 @rendermode InteractiveServer
 @page "/InitialNetmonSetup"
 
-@if(latestNetmon != null)
-{
-	<h2>New Netmon added to collection!</h2>
-	<p>Name:</p>
-	<input @bind="LatestNetmonName" @bind:event="oninput" />
-	<p>Skin Colour: @latestNetmon.SkinColour</p>
-	<p>Hair Colour: @latestNetmon.HairColour</p>
-	<p>Hair Location: @latestNetmon.HairLocation</p>
-	<p>Movement Type: @latestNetmon.MovementType</p>
-	<p>Number of Eyes: @latestNetmon.NumEyes</p>
-	<p>Attack: @latestNetmon.AttackStat</p>
-	<p>Defence: @latestNetmon.DefenceStat</p>
-	<p>Speed: @latestNetmon.SpeedStat</p>
-}
+<div id="Content">
 
-@if(NetmonCollection.Netmons[0] == null)
-{
-	<button @onclick="BuildNetmon">New Netmon!</button>	
-}
+	@if(latestNetmon != null)
+	{
+		<h2>New Netmon added to collection!</h2>
 
-@if(NetmonCollection.Netmons[0] != null
-	&& NetmonCollection.Netmons[2] == null
-	&& !string.IsNullOrEmpty(LatestNetmonName))
-{
-	<button @onclick="BuildNetmon">New Netmon!</button>
-}
+		<p>This is a @latestNetmon.Size, @latestNetmon.SkinColour Netmon</p>
+		<p>It has @latestNetmon.HairColour hair covering its @latestNetmon.HairLocation</p>
+		<p>It moves by @latestNetmon.MovementType and has @latestNetmon.NumEyes eyes</p>
+		<p>Its name shall be:</p>
+		<input maxLength="20" @bind="LatestNetmonName" @bind:event="oninput" />
+	}
 
-@if(NetmonCollection.Netmons[2] != null
-	&& !string.IsNullOrEmpty(LatestNetmonName))
-{
-	<a href="/Collection">Continue</a>
-}
+	@if(NetmonCollection.Netmons[0] == null)
+	{
+		<button @onclick="BuildNetmon">New Netmon!</button>	
+	}
 
+	@if(NetmonCollection.Netmons[0] != null
+		&& NetmonCollection.Netmons[2] == null
+		&& !string.IsNullOrEmpty(LatestNetmonName))
+	{
+		<button @onclick="BuildNetmon">New Netmon!</button>
+	}
+
+	@if(NetmonCollection.Netmons[2] != null
+		&& !string.IsNullOrEmpty(LatestNetmonName))
+	{
+		<a href="/Collection">Continue</a>
+	}
+
+</div>
 
 @code {
 	NetmonBuilder builder = new();

@@ -1,21 +1,34 @@
-* {
-    box-sizing: border-box;
+:root{
+    --teal: rgb(67, 238, 185);
+    --lightTeal: rgb(209, 255, 207);
+    --orange: rgb(238, 193, 67);
+    --lightOrange: rgb(255, 230, 207);
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    background-color: var(--teal);
 }
 
 .page {
     min-height: 100vh;
 }
 
-header {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+h1 {
+    text-align: center;
+    margin-top: 50px;
 }
 
-main {
-    padding: 20px;
+button, a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: var(--orange);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button:hover,
+a:hover{
+    background-color: var(--lightOrange);
 }
